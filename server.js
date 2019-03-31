@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 var homeautomation = [
     {
-        "id": "1"
-        "text": "Default"
+        "id": "1",
+        "text": "Default",
         "Status" : false
     }
 ];
