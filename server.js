@@ -13,38 +13,27 @@ app.all('/*', function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-var ingredients = [
+var homeautomation = [
     {
-        "id": "234kjw",
-        "text": "Eggs"
-    },
-    {
-        "id": "as82w",
-        "text": "Milk"
-    },
-    {
-        "id": "234sk1",
-        "text": "Bacon"
-    },
-    {
-        "id": "ppo3j3",
-        "text": "Frog Legs"
+        "id": "1"
+        "text": "Default"
+        "Status" : false
     }
 ];
 
 
-app.get('/ingredients', function(req, res) {
+app.get('/homeautomation', function(req, res) {
     console.log("GET From SERVER");
-    res.send(ingredients);
+    res.send(homeautomation);
 });
 
-app.post('/ingredients', function(req, res) {
-    var ingredient = req.body;
+app.post('/homeautomation', function(req, res) {
+    var requestbody = req.body;
     console.log(req.body);
     
-    ingredients = []
-    ingredients.push(ingredient);
-    res.status(200).send("Successfully posted ingredient");
+    homeautomation = []
+    homeautomation.push(requestbody);
+    res.status(200).send("Successfully posted requestbody");
 });
 
 app.listen(8080);
