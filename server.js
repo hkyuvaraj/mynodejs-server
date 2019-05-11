@@ -36,4 +36,4 @@ app.post('/homeautomation', function(req, res) {
     res.status(200).send("Successfully posted requestbody");
 });
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
