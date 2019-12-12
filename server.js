@@ -13,13 +13,29 @@ app.all('/*', function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-var homeautomation = [
+var homeautomation = { "appliances" : [
     {
         "id": "1",
         "text": "Default",
-        "Status" : false
+        "Status" : "ON"
+    },
+    {
+        "id": "2",
+        "text": "Default",
+        "Status" : "OFF"
+    },
+   {
+        "id": "3",
+        "text": "Default",
+        "Status" : "OFF"
+    },
+   {
+        "id": "4",
+        "text": "Default",
+        "Status" : "OFF"
     }
-];
+  
+]};
 
 
 app.get('/homeautomation', function(req, res) {
