@@ -47,8 +47,10 @@ app.post('/homeautomation', function(req, res) {
     var requestbody = req.body;
     console.log(req.body);
     
-    homeautomation = {}
-    homeautomation.push(requestbody);
+    //homeautomation = []
+    //homeautomation.push(requestbody);
+    homeautomation = requestbody
+  
     res.status(201).send("Successfully posted requestbody");
 });
 
