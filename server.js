@@ -47,9 +47,9 @@ app.post('/homeautomation', function(req, res) {
     var requestbody = req.body;
     console.log(req.body);
     
-    homeautomation = []
+    homeautomation = null
     homeautomation.push(requestbody);
-    res.status(200).send("Successfully posted requestbody");
+    res.status(201).send("Successfully posted requestbody");
 });
 
 app.listen(process.env.PORT || 8080);
