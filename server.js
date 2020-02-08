@@ -70,10 +70,10 @@ app.post('/sendMail', function(req, res) {
     if (error) {
       return res.status(500).send(error);
       }
-    console.log('Message sent: ' + info.response);
+    console.log('Message sent: ');
     console.log('Data:' + data);
   });
-  res.status(201).send("Successfully sent email:" + info.response);
+  res.status(201).send("Successfully sent email:");
 });
 
 
