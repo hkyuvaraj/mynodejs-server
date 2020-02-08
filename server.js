@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var nodemailer = require('nodemailer');
+
 
 //Allow all requests from all domains & localhost
 app.all('/*', function(req, res, next) {
@@ -53,5 +55,26 @@ app.post('/homeautomation', function(req, res) {
   
     res.status(201).send("Successfully posted requestbody");
 });
+
+app.post('/sendMail', function(req, res) {
+  var transporter = nodemailer.createTransport('smtps://krishnan.halaiah@gmail.com:reena@jan07@smtp.gmail.com');
+  var data = req.body;
+  var mailOptions = {
+    from: 'krishnan.halaiah@gmail.com',
+    to: 'h.k.yuvaraj@gmail.com',
+    subject: 'Email sent by nodemailer',
+    text: data
+  };
+
+  transporter.sendMail(mailOptions, function(error, info) {
+    if (error) {
+      return console.log(error);
+    }
+    console.log('Message sent: ' + info.response);
+    console.log('Data:' + data);
+  });
+  res.json(data);
+});
+
 
 app.listen(process.env.PORT || 8080);
