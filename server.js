@@ -73,7 +73,7 @@ app.post('/sendMail', function(req, res) {
     console.log('Message sent: ');
     console.log('Data:' + data);
   });
-  res.status(201).send("Successfully sent email:");
+  res.status(201).send("Successfully sent email:"+ info);
 });
 
 
