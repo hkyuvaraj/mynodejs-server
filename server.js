@@ -57,7 +57,14 @@ app.post('/homeautomation', function(req, res) {
 });
 
 app.post('/sendMail', function(req, res) {
-  var transporter = nodemailer.createTransport('smtps://krishnan.halaiah@gmail.com:reena@jan07@smtp.gmail.com');
+  var transporter = nodemailer.createTransport({
+ service: 'gmail',
+ auth: {
+        user: 'krishnan.halaiah@gmail.com',
+        pass: 'reena@jan07'
+    }
+});
+
   var data = req.body;
   var mailOptions = {
     from: 'krishnan.halaiah@gmail.com',
@@ -67,13 +74,15 @@ app.post('/sendMail', function(req, res) {
   };
 
   transporter.sendMail(mailOptions, function(error, info) {
-    if (error) {
-      return res.status(500).send(error);
-      }
-    console.log('Message sent: ');
     console.log('Data:' + data);
+     if (error) {
+      return res.status(500).send(error);
+      }  
+    else{
+      return res.status(201).send("Successfully sent email:"+ info);
+    }
   });
-  res.status(201).send("Successfully sent email:"+ info);
+  
 });
 
 
