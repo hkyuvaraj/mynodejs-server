@@ -107,6 +107,9 @@ app.post('/receive', function(request, respond) {
 
 app.get('/download', function(req, res){
   const file = `${__dirname}/public/data.txt`;
+  
+  res.setHeader('Content-disposition', 'attachment; filename=data.txt');
+  res.setHeader('Content-type', 'text/plain');
   res.download(file); // Set disposition and send it.
 });
 
