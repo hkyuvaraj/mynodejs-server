@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var nodemailer = require('nodemailer');
-
+var fs = require('fs');
 
 //Allow all requests from all domains & localhost
 app.all('/*', function(req, res, next) {
@@ -14,6 +14,9 @@ app.all('/*', function(req, res, next) {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use('/public', express.static(__dirname + '/public'));  
+app.use(express.static(__dirname + '/public')); 
+
 
 var homeautomation = { "appliances" : [
     {
@@ -85,6 +88,25 @@ app.post('/sendMail', function(req, res) {
   });
   
 });
+
+
+
+app.post('/receive', function(request, respond) {
+    var body = '';
+    filePath = __dirname + '/public/data.txt';
+    request.on('data', function(data) {
+        body += data;
+    });
+
+    request.on('end', function (){
+        fs.appendFile(filePath, body, function() {
+            respond.end();
+        });
+    });
+});
+
+
+
 
 
 app.listen(process.env.PORT || 8080);
