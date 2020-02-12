@@ -100,7 +100,8 @@ app.post('/receive', function(request, respond) {
 
     request.on('end', function (){
         fs.appendFile(filePath, body, function() {
-            respond.end();
+         return respond.status(201).send("Successfully saved file @:"+ filePath);
+         //respond.end();
         });
     });
 });
