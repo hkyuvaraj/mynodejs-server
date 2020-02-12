@@ -111,7 +111,7 @@ app.get('/download', function(req, res){
   
   res.setHeader('Content-disposition', 'attachment; filename=data.txt');
   res.setHeader('Content-type', 'text/plain');
-  res.download(file); // Set disposition and send it.
+  res.download('/app/public/data.txt'); // Set disposition and send it.
 });
 
 
