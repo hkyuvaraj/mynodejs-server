@@ -114,7 +114,6 @@ app.get('/download', function(req, res){
   res.download('/app/public/data.txt'); // Set disposition and send it.
 });
 
-const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
 
