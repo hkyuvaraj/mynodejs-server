@@ -206,4 +206,26 @@ function listFiles(auth) {
 
 
 
+function createFolder(auth) {
+  const drive = google.drive({version: 'v3', auth});
+  var fileMetadata = {
+  'name': 'Heroku',
+  'mimeType': 'application/vnd.google-apps.folder'
+};
+drive.files.create({
+  resource: fileMetadata,
+  fields: 'id'
+}, function (err, file) {
+  if (err) {
+    // Handle error
+    console.error(err);
+  } else {
+    console.log('Folder Id: ', file.id);
+  }
+});
+  
+}
+
+
+
 app.listen(process.env.PORT || 8080);
