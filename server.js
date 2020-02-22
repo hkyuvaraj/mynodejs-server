@@ -65,7 +65,7 @@ app.post('/sendMail', function(req, res) {
  service: 'gmail',
  auth: {
         user: 'krishnan.halaiah@gmail.com',
-        pass: 'reena@jan07'
+        pass: '*******'
     }
 });
 
