@@ -13,7 +13,7 @@ app.all('/*', function(req, res, next) {
 });
 
 app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: false}));
 //app.use('/public', express.static(__dirname + '/public'));  
 //app.use(express.static(__dirname + '/public')); 
 
@@ -50,6 +50,7 @@ app.get('/homeautomation', function(req, res) {
 
 app.post('/homeautomation', function(req, res) {
     console.log("Received POST request....");
+    console.log("Request data:" + req.data);
     var requestbody = req.body;
     console.log("Request body in string format:" + JSON.stringify(requestbody));
     
