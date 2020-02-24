@@ -50,9 +50,10 @@ app.get('/homeautomation', function(req, res) {
 
 app.post('/homeautomation', function(req, res) {
     console.log("Received POST request....");
-    console.log("Request data:" + req.data);
-    var requestbody = req.body;
     console.log("Request body in string format:" + JSON.stringify(requestbody));
+    
+    var requestbody = req.body;
+    
     
     //homeautomation = []
     //homeautomation.push(requestbody);
