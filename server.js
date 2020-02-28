@@ -13,7 +13,12 @@ app.all('/*', function(req, res, next) {
 });
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({
+      parameterLimit: 100000,
+      limit: '50mb',
+      extended: true
+     }));
+
 //app.use('/public', express.static(__dirname + '/public'));  
 //app.use(express.static(__dirname + '/public')); 
 
